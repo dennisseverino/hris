@@ -1,0 +1,178 @@
+.employee-list-layout {
+  display: flex;
+  height: 100vh;
+  background: #f8fafc;
+}
+
+.employee-list-content {
+  flex: 1;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;   /* 🔥 add this */
+  z-index: 1;           /* 🔥 add this */
+}
+
+
+/* ================= TOOLBAR ================= */
+.employee-list-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.employee-list-toolbar .search-bar input {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: #f1f5f9;
+}
+
+/* ================= TABLE ================= */
+.employee-table-wrapper {
+  flex: 1;
+  overflow: auto;
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #1e90ff;
+}
+
+.employee-table {
+  width: 100%;
+  min-width: 1400px;
+  border-collapse: collapse;
+}
+
+.employee-table thead th {
+  position: sticky;
+  top: 0;
+  background: #1e90ff;
+  color: white;
+  padding: 10px;
+  font-size: 12px;
+}
+
+.employee-table td {
+  padding: 10px;
+  font-size: 13px;
+}
+
+.employee-table tbody tr:nth-child(even) {
+  background: #f7f7f7;
+}
+
+.employee-table tbody tr:hover {
+  background: #eaf4ff;
+}
+
+/* ================= CARD VIEW ================= */
+.employee-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 18px;
+}
+
+.employee-card {
+  background: white;
+  border-radius: 12px;
+  padding: 18px;
+  border: 2px solid #1e90ff;
+  display: flex;
+  gap: 15px;
+}
+
+.employee-avatar {
+  width: 60px;
+  height: 60px;
+  background: #1e90ff;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.employee-card-info h4 {
+  margin: 0;
+  font-size: 15px;
+}
+
+.employee-card-info p {
+  margin: 3px 0;
+  font-size: 13px;
+  color: #555;
+}
+
+/* ================= ACTION BUTTONS ================= */
+.employee-action-cell {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.employee-btn-edit {
+  background: #1e90ff;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.employee-btn-edit:hover {
+  background: #187bcd;
+}
+
+.employee-btn-delete {
+  background: #ff4444;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.employee-btn-delete:hover {
+  background: #e03e3e;
+}
+
+.employee-btn-view {
+  background: #e5e7eb;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.employee-btn-view:hover {
+  background: #d1d5db;
+}
+
+.employee-list-content .add {
+  background: #1e90ff;
+  color: white;
+  border-radius: 8px;
+  padding: 8px 14px;
+  border: none;
+  cursor: pointer;
+}
+
+.employee-list-content .add:hover {
+  background: #187bcd;
+}
+
+.employee-list-content .export {
+  background: #e5e7eb;
+  border-radius: 8px;
+  padding: 8px 14px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.employee-list-content .export:hover {
+  background: #d1d5db;
+}
