@@ -1,9 +1,7 @@
 <?php
-session_start();
 
-header("Access-Control-Allow-Origin: http://localhost:5173");
-header("Access-Control-Allow-Credentials: true");
-header("Content-Type: application/json");
+require_once "../cors.php";
+session_start();
 
 if (!isset($_SESSION['user_id'], $_SESSION['employee_id'])) {
     http_response_code(401);
@@ -16,7 +14,6 @@ if (!isset($_SESSION['user_id'], $_SESSION['employee_id'])) {
 
 require_once "../config/database.php";
 
-// 🔥 Get first name from employees table
 $stmt = $conn->prepare("
     SELECT first_name
     FROM employees
@@ -43,6 +40,8 @@ echo json_encode([
     "success" => true,
     "user" => [
         "first_name" => $employee['first_name'],
-        "role_name"  => $_SESSION['role_name']
+        "role_name"  => $_SESSION['role_name'] ?? null
     ]
 ]);
+
+exit();

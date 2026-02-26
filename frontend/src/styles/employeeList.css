@@ -176,3 +176,8 @@
 .employee-list-content .export:hover {
   background: #d1d5db;
 }
+
+.employee-table th {
+  cursor: pointer;
+  user-select: none;
+}

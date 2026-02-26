@@ -13,7 +13,7 @@ const Sidebar = () => {
   const [employeeOpen, setEmployeeOpen] = useState(false); // 🔥 dropdown state
 
   useEffect(() => {
-    fetch('http://localhost/employee-system/backend/auth/get_user.php', {
+    fetch('http://localhost/employee-system/backend/control_panel/get_user.php', {
       credentials: 'include',
     })
       .then(res => {
@@ -86,11 +86,18 @@ const Sidebar = () => {
                 Lists
               </NavLink>
 
-              <NavLink to="/ControlPanel" className={({ isActive }) => isActive ? 'active' : ''}>
-                Control Panel
-              </NavLink>
+            
             </div>
           )}
+
+            {user?.role_name === "Superadmin" && (
+                <NavLink
+                  to="/ControlPanel"
+                  className={({ isActive }) => (isActive ? "active" : "")}
+                >
+                  Control Panel
+                </NavLink>
+              )}
         </div>
       </nav>
     </aside>

@@ -9,7 +9,6 @@ import EmployeeList from './pages/EmployeeList';
 import ControlPanel from './pages/ControlPanel';
 
 
-
 function App() {
   return (
     <Routes>
@@ -57,7 +56,7 @@ function App() {
       <Route
         path="/ControlPanel"
         element={
-          <ProtectedRoute>
+          <ProtectedRoute allowedRoles={["Superadmin"]}>
             <ControlPanel />
           </ProtectedRoute>
         }

@@ -7,9 +7,9 @@ import EmployeeCards from '../components/EmployeeCard';
 import EditEmployee from '../components/EditEmployee';
 import ViewScheduleModal from '../components/ViewScheduleModal';
 import AddEmployee from './AddEmployee';
+import FilterModal from '../components/FilterModal';
 
 import type { Employee } from '../types/employee';
-
 import '../styles/employeeList.css';
 
 const EmployeeList = () => {
@@ -28,17 +28,26 @@ const EmployeeList = () => {
   const [isAddOpen, setIsAddOpen] = useState(false);
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [isViewOpen, setIsViewOpen] = useState(false);
+  const [isFilterOpen, setIsFilterOpen] = useState(false); // ✅ FIXED
 
   const [selectedEmployee, setSelectedEmployee] =
     useState<Employee | null>(null);
   const [viewEmployee, setViewEmployee] =
     useState<Employee | null>(null);
 
+  // Filters
+  const [filters, setFilters] = useState({
+    account: '',
+    status: '',
+    position: '',
+    sort: 'asc' as 'asc' | 'desc',
+  });
+
   useEffect(() => {
     fetchEmployees();
   }, []);
 
-  // ================= FETCH EMPLOYEES =================
+  // ================= FETCH =================
   const fetchEmployees = async () => {
     try {
       const res = await fetch(
@@ -65,53 +74,10 @@ const EmployeeList = () => {
     setIsEditOpen(true);
   };
 
-  // ================= VIEW SCHEDULE =================
+  // ================= VIEW =================
   const handleViewSchedule = (employee: Employee) => {
     setViewEmployee(employee);
     setIsViewOpen(true);
-  };
-
-  // ================= SAVE EDIT =================
-  const handleSave = async (updatedEmployee: Employee) => {
-    try {
-      const res = await fetch(
-        'http://localhost/employee-system/backend/employees/update_employee_schedule.php',
-        {
-          method: 'POST',
-          credentials: 'include',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            employee_id: updatedEmployee.employee_id,
-            schedules: updatedEmployee.schedules,
-          }),
-        }
-      );
-
-      const data = await res.json();
-
-      if (data.success) {
-        setEmployees(prev =>
-          prev.map(emp =>
-            emp.employee_id === updatedEmployee.employee_id
-              ? updatedEmployee
-              : emp
-          )
-        );
-
-        setToast({
-          message: 'Schedule updated successfully',
-          type: 'success',
-        });
-
-        setIsEditOpen(false);
-      } else {
-        setToast({ message: 'Failed to update schedule', type: 'error' });
-      }
-    } catch {
-      setToast({ message: 'Server error', type: 'error' });
-    }
-
-    setTimeout(() => setToast(null), 3000);
   };
 
   // ================= DELETE =================
@@ -136,7 +102,6 @@ const EmployeeList = () => {
         setEmployees(prev =>
           prev.filter(emp => emp.employee_id !== id)
         );
-
         setToast({ message: 'Employee deleted', type: 'success' });
       } else {
         setToast({ message: 'Delete failed', type: 'error' });
@@ -148,25 +113,56 @@ const EmployeeList = () => {
     setTimeout(() => setToast(null), 3000);
   };
 
-  // ================= SEARCH FILTER =================
+  // ================= SEARCH + FILTER + SORT =================
   const filteredEmployees = useMemo(() => {
-    return employees.filter(emp => {
+    let result = employees.filter(emp => {
       const fullName =
-        `${emp.first_name ?? ''} ${emp.middle_name ?? ''} ${
-          emp.last_name ?? ''
-        }`.toLowerCase();
+        `${emp.first_name ?? ''} ${emp.middle_name ?? ''} ${emp.last_name ?? ''}`
+          .toLowerCase();
 
       const email = emp.email?.toLowerCase() ?? '';
       const position = emp.position?.toLowerCase() ?? '';
+      const account = emp.account?.toLowerCase() ?? '';
+
       const searchTerm = search.toLowerCase();
 
-      return (
+      const matchesSearch =
         fullName.includes(searchTerm) ||
         email.includes(searchTerm) ||
-        position.includes(searchTerm)
+        position.includes(searchTerm);
+
+      const matchesAccount =
+        !filters.account || account === filters.account.toLowerCase();
+
+      const matchesStatus =
+        !filters.status || status === filters.status.toLowerCase();
+
+      const matchesPosition =
+        !filters.position ||
+        position === filters.position.toLowerCase();
+
+      return (
+        matchesSearch &&
+        matchesAccount &&
+        matchesStatus &&
+        matchesPosition
       );
     });
-  }, [employees, search]);
+
+    // SORT
+    result.sort((a, b) => {
+      const nameA = a.first_name?.toLowerCase() ?? '';
+      const nameB = b.first_name?.toLowerCase() ?? '';
+
+      if (filters.sort === 'asc') {
+        return nameA.localeCompare(nameB);
+      } else {
+        return nameB.localeCompare(nameA);
+      }
+    });
+
+    return result;
+  }, [employees, search, filters]);
 
   return (
     <div className="employee-list-layout">
@@ -180,7 +176,13 @@ const EmployeeList = () => {
 
         <div className="employee-list-toolbar">
           <SearchBar search={search} setSearch={setSearch} />
-          
+
+          <button
+            className="filter-btn"
+            onClick={() => setIsFilterOpen(true)}
+          >
+            Filter
+          </button>
 
           <div className="employee-view-toggle">
             <button
@@ -219,6 +221,17 @@ const EmployeeList = () => {
         )}
       </main>
 
+      {/* FILTER MODAL */}
+      {isFilterOpen && (
+        <FilterModal
+          filters={filters}
+          accounts={[...new Set(employees.map(e => e.account))]}
+          positions={[...new Set(employees.map(e => e.position))]}
+          onApply={setFilters}
+          onClose={() => setIsFilterOpen(false)}
+        />
+      )}
+
       {/* ADD MODAL */}
       {isAddOpen && (
         <AddEmployee
@@ -245,8 +258,6 @@ const EmployeeList = () => {
           }}
         />
       )}
-
-
 
       {/* VIEW MODAL */}
       {isViewOpen && viewEmployee && (
