@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 23, 2026 at 09:04 AM
+-- Generation Time: Mar 02, 2026 at 07:35 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -134,7 +134,10 @@ INSERT INTO `employees` (`employee_id`, `user_id`, `first_name`, `middle_name`, 
 (16, 33, 'stella', 'stella', 'stellaa', 'ireply', '2002-08-23', 'Married', 'stellaa@gmail.com', 'stella@gmail.com', 'Sr. Recruitment Specialist', 'iReply Back Office Services', 'Cluster B', '09521511421', 'Active', 'Regular', '2026-02-17'),
 (17, 34, 'new', 'test', 'test', 'ireply', '2002-02-11', 'Married', 'new@gmail.com', 'new@gmail.com', 'HR Coordinator', 'RabbitRun', 'Cluster C', '098746253125', 'Active', 'Regular', '2026-02-18'),
 (18, 35, 'test2', 'test2', 'test2', 'iqor', '2002-11-20', 'Married', 'test2@gmail.com', 'test2@gmail.com', 'Accounting', 'NUSO', 'Cluster D', '095827361234', 'Active', 'Contractual', '2026-02-18'),
-(19, 37, 'jadenn', 'jaden', 'jaden', 'ireply', '2001-11-11', 'Widowed', 'jaden1@gmail.com', 'jaden1@gmail.com', 'Service Delivery Manager', 'SIPPIO', 'Night Support', '09876452612', 'Active', 'Probationary', '2026-02-20');
+(19, 37, 'jadenn', 'jaden', 'jaden', 'ireply', '2001-11-11', 'Widowed', 'jaden1@gmail.com', 'jaden1@gmail.com', 'Service Delivery Manager', 'SIPPIO', 'Night Support', '09876452612', 'Active', 'Probationary', '2026-02-20'),
+(20, 38, 'admin1', 'admin1', 'admin1', 'admin1@gmail.com', '2002-11-11', 'Single', 'admin1@gmail.com', 'admin1@gmail.com', 'HR Coordinator', 'iReply Back Office Services', 'Technical Team', '09521235612', 'Active', 'Regular', '2026-02-26'),
+(21, 39, 'Eu Geuo', 'Banasing', 'Vecino', 'Vista Alegre', '2001-08-27', 'Single', 'eu.ireply@gmail.com', 'eu@gmail.com', 'Head of Training', 'Telepath', 'Cluster B', '09919490401', 'Active', 'Regular', '2026-02-27'),
+(22, 41, 'E', 'e', 'e', 'j', '2050-01-05', '', 'eug.ireply@gmail.com', 'eu@gmail.com', 'SIP NOC Support Engineer', 'Vitale ENT', 'Cluster A', '09', 'Active', 'Regular', '2026-02-27');
 
 -- --------------------------------------------------------
 
@@ -345,7 +348,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `username`, `password_hash`, `role_id`, `created_at`) VALUES
-(2, 'admin', '$2y$10$0b26/Du3MJNhyhuKn9/IeOWlayMPo5DtAV2zRuF/Alt1xwDk4hhy6', 1, '2026-01-29 17:04:40'),
+(2, 'superadmin', '$2y$10$0b26/Du3MJNhyhuKn9/IeOWlayMPo5DtAV2zRuF/Alt1xwDk4hhy6', 1, '2026-01-29 17:04:40'),
 (7, 'test@gmail.com', '$2y$10$/Gaks65ILKb/ivLB6wmROupTUEzzOw4f4lwHUFBIZHo54rMS3chN2', 4, '2026-01-29 17:41:56'),
 (8, 'dennis@gmail.com', '$2y$10$U8mD1Xamfqzu1NFouNEv5OHB2W9oj4a5NXnT21IEx9xODiyCmDnDu', 4, '2026-01-29 17:49:01'),
 (9, 'stellamarieeriman@gmail.com', '$2y$10$WdOze02mUKE1nqw6mF5p5.bnhywRv7SFiiyLSV6H3ZRnQ19cSBKsu', 4, '2026-01-30 07:44:40'),
@@ -363,7 +366,10 @@ INSERT INTO `users` (`user_id`, `username`, `password_hash`, `role_id`, `created
 (33, 'stellaa@gmail.com', '$2y$10$vJwLDimPJZ4b9VpGPix2Ku9EdSYjvtxAs4Oj5wxkBL46WIqyItBZ.', 4, '2026-02-17 16:33:53'),
 (34, 'new@gmail.com', '$2y$10$id7cOlM1dH/cMHnMtyKV4ul8WBF5SgdQaagTbdRR7sDQOsGcz.j1W', 4, '2026-02-18 15:46:56'),
 (35, 'test2@gmail.com', '$2y$10$7DMKRw.KqnLjXp7CAP4OP.ViRORgkBjKgleeCXNIDPR6sJ2Lyn8pi', 4, '2026-02-18 15:48:46'),
-(37, 'jaden1@gmail.com', '$2y$10$BGKaFnbHG2juvvB.HC8sv.ruH/rvbkGftNW5DmIaJVdtvORpgFcX6', 4, '2026-02-20 10:28:20');
+(37, 'jaden1@gmail.com', '$2y$10$BGKaFnbHG2juvvB.HC8sv.ruH/rvbkGftNW5DmIaJVdtvORpgFcX6', 4, '2026-02-20 10:28:20'),
+(38, 'admin1@gmail.com', '$2y$10$GbYhQz9I2M1eAQkKEiaYvOE7s3/JJzrYI7o63Q7B9c1G9Iw71rxbG', 4, '2026-02-26 09:31:30'),
+(39, 'eu.ireply@gmail.com', '$2y$10$IBKepYJLwO2GwvU1Ne7vROyXXIXyIP1P4xzroHpofbW6dUNThVkRa', 4, '2026-02-27 11:49:29'),
+(41, 'eug.ireply@gmail.com', '$2y$10$H0Dp7Hv2ZClWPT4MtcKmfe1QMb4Tt58fDvwYXAvjNO9uu0ChQWo36', 4, '2026-02-27 11:52:10');
 
 --
 -- Indexes for dumped tables
@@ -482,7 +488,7 @@ ALTER TABLE `break_logs`
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `employee_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `employee_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `holidays`
@@ -530,7 +536,7 @@ ALTER TABLE `time_logs`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- Constraints for dumped tables
