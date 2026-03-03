@@ -1,10 +1,6 @@
 <?php
 // ================= CORS =================
-header("Access-Control-Allow-Origin: http://localhost:5173");
-header("Access-Control-Allow-Methods: POST, OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type");
-header("Access-Control-Allow-Credentials: true");
-header("Content-Type: application/json");
+require_once "../cors.php";
 
 if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
@@ -107,3 +103,25 @@ echo json_encode([
         "role" => $user['role_name']
     ]
 ]);
+
+// ================= FETCH ROLE PERMISSIONS =================
+$permStmt = $conn->prepare("
+    SELECT p.permission_name
+    FROM role_permissions rp
+    INNER JOIN permissions p 
+        ON rp.permission_id = p.permission_id
+    WHERE rp.role_id = ?
+");
+
+$permStmt->bind_param("i", $user['role_id']);
+$permStmt->execute();
+
+$permResult = $permStmt->get_result();
+
+$permissions = [];
+
+while ($row = $permResult->fetch_assoc()) {
+    $permissions[] = $row['permission_name'];
+}
+
+$_SESSION['permissions'] = $permissions;

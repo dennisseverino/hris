@@ -32,8 +32,20 @@ const Login = () => {
       const data = await res.json();
 
       if (data.success) {
-        // frontend auth flag
-        localStorage.setItem('token', 'session');
+
+        // Fetch session permissions
+        const sessionRes = await fetch(
+          'http://localhost/employee-system/backend/auth/get_session.php',
+          { credentials: 'include' }
+        );
+
+        const sessionData = await sessionRes.json();
+
+        if (sessionData.success) {
+          localStorage.setItem('permissions', JSON.stringify(sessionData.permissions));
+          localStorage.setItem('role', sessionData.role);
+        }
+
         localStorage.setItem('user', JSON.stringify(data.user));
 
         navigate('/dashboard', { replace: true });
