@@ -254,21 +254,28 @@ const restoreUser = async (id: number) => {
   fetchArchivedUsers();
 };
 
-
 const deleteUser = async (id: number) => {
 
-  await fetch(
-    "http://localhost/employee-system/backend/control_panel/delete_user_permanently.php",
+  const res = await fetch(
+    `http://localhost/employee-system/backend/control_panel/delete_user_permanently.php?employee_id=${id}`,
     {
       method: "POST",
-      credentials: "include",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ employee_id: id })
+      credentials: "include"
     }
   );
 
-  fetchArchivedUsers();
+  const data = await res.json();
+
+  console.log("Delete response:", data);
+
+  if (data.success) {
+    fetchArchivedUsers(); // refresh table
+  } else {
+    alert(data.message);
+  }
+
 };
+
   /* =========================
      RETURN
   ========================== */
@@ -430,13 +437,21 @@ const deleteUser = async (id: number) => {
                       <td>
 
                         <button
-                          onClick={() => restoreUser(user.employee_id)}
+                          onClick={() => {
+                            if (confirm("Restore this employee?")) {
+                              restoreUser(user.employee_id);
+                            }
+                          }}
                         >
                           Restore
                         </button>
 
                         <button
-                          onClick={() => deleteUser(user.employee_id)}
+                          onClick={() => {
+                            if (confirm("Permanently delete this employee?")) {
+                              deleteUser(user.employee_id);
+                            }
+                          }}
                         >
                           Delete Permanently
                         </button>

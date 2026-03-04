@@ -31,6 +31,7 @@ SELECT
   s.work_setup
 FROM employees e
 LEFT JOIN schedules s ON e.employee_id = s.employee_id
+WHERE e.archived = 0
 ORDER BY e.employee_id DESC
 ";
 

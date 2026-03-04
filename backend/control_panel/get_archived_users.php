@@ -10,14 +10,14 @@ if ($_SESSION['role_name'] !== 'Superadmin') {
 
 require_once "../config/database.php";
 
-require_once "../utils/logger.php";
+// require_once "../utils/logger.php";
 
-logAction(
-    $conn,
-    $_SESSION['user_id'],
-    "Archived Employee",
-    $employee_id
-);
+// logAction(
+//     $conn,
+//     $_SESSION['user_id'],
+//     "Archived Employee",
+//     $employee_id
+// );
 
 $result = $conn->query("
 SELECT 
