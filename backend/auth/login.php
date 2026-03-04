@@ -125,3 +125,50 @@ while ($row = $permResult->fetch_assoc()) {
 }
 
 $_SESSION['permissions'] = $permissions;
+
+// ================= GET ROLE PERMISSIONS =================
+
+$rolePermStmt = $conn->prepare("
+    SELECT p.permission_name, p.permission_id
+    FROM role_permissions rp
+    INNER JOIN permissions p ON rp.permission_id = p.permission_id
+    WHERE rp.role_id = ?
+");
+
+$rolePermStmt->bind_param("i", $user['role_id']);
+$rolePermStmt->execute();
+$rolePermResult = $rolePermStmt->get_result();
+
+$permissions = [];
+
+while ($row = $rolePermResult->fetch_assoc()) {
+    $permissions[$row['permission_id']] = $row['permission_name'];
+}
+
+
+// ================= APPLY USER OVERRIDES =================
+
+$userPermStmt = $conn->prepare("
+    SELECT permission_id, is_allowed
+    FROM user_permissions
+    WHERE user_id = ?
+");
+
+$userPermStmt->bind_param("i", $user['user_id']);
+$userPermStmt->execute();
+$userPermResult = $userPermStmt->get_result();
+
+while ($row = $userPermResult->fetch_assoc()) {
+
+    if ($row['is_allowed']) {
+        // force allow
+        $permissions[$row['permission_id']] = $permissions[$row['permission_id']] ?? null;
+    } else {
+        // force deny
+        unset($permissions[$row['permission_id']]);
+    }
+}
+
+
+// convert to plain list
+$_SESSION['permissions'] = array_values(array_filter($permissions));
