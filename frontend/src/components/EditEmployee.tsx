@@ -39,10 +39,6 @@ const accounts = [
   "Recent Communication","Kevlar IT Solutions","Smart Choice"
 ];
 
-const clusters = [
-  "Cluster A","Cluster B","Cluster C","Cluster D",
-  "Night Support","Technical Team","NOC Team","Development Team"
-];
 
 const employeeTypes = ["Regular","Probationary","Contractual","Intern"];
 
@@ -79,7 +75,7 @@ const EditEmployee = ({ employee, onClose, onSave }: Props) => {
       setLoading(true);
 
       const res = await fetch(
-        'http://localhost/hris/employee-system/backend/employees/update_employee.php',
+        'http://localhost/hris/backend/employees/update_employee.php',
         {
           method: 'POST',
           credentials: 'include',
@@ -139,17 +135,6 @@ return (
             <option value="">Select Account</option>
             {accounts.map((a) => (
                 <option key={a} value={a}>{a}</option>
-            ))}
-            </select>
-
-            <select
-            name="cluster"
-            value={formData.cluster || ''}
-            onChange={handleChange}
-            >
-            <option value="">Select Cluster</option>
-            {clusters.map((c) => (
-                <option key={c} value={c}>{c}</option>
             ))}
             </select>
 

@@ -7,6 +7,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 }
 
 session_start();
+require_once "../helpers/permission_helper.php";
+
+checkPermission("Add Employee");
 require_once "../config/database.php";
 
 ini_set('display_errors', 1);

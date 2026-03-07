@@ -29,6 +29,19 @@ const EmployeeList = () => {
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [isViewOpen, setIsViewOpen] = useState(false);
   const [isFilterOpen, setIsFilterOpen] = useState(false); // ✅ FIXED
+  const [permissions, setPermissions] = useState<string[]>([]);
+  
+  useEffect(() => {
+  fetch("http://localhost/hris/backend/auth/get_session.php", {
+    credentials: "include",
+  })
+    .then(res => res.json())
+    .then(data => {
+      if (data.success) {
+        setPermissions(data.permissions);
+      }
+    });
+}, []);
 
   const [selectedEmployee, setSelectedEmployee] =
     useState<Employee | null>(null);
@@ -135,8 +148,9 @@ const EmployeeList = () => {
         !filters.account || account === filters.account.toLowerCase();
 
       const matchesStatus =
-        !filters.status || status === filters.status.toLowerCase();
-
+        !filters.status ||
+        emp.employment_status?.toLowerCase() === filters.status.toLowerCase();
+        
       const matchesPosition =
         !filters.position ||
         position === filters.position.toLowerCase();
@@ -206,6 +220,7 @@ const EmployeeList = () => {
         ) : view === 'table' ? (
           <EmployeeTable
             employees={filteredEmployees}
+            permissions={permissions}
             onEdit={handleEdit}
             onDelete={handleDelete}
             onViewSchedule={handleViewSchedule}
