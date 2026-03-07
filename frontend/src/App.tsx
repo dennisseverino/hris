@@ -19,7 +19,7 @@ function App() {
         credentials: "include"
       }).catch(() => {});
 
-    }, 10000); // every 10 seconds
+    }, 5000); // every 5 seconds
 
     return () => clearInterval(interval);
 
