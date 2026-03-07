@@ -1,10 +1,14 @@
 interface Props {
   title?: string;
   total?: number;
+  permissions: string[];
   onAddEmployee?: () => void;
 }
 
-const Header = ({ title, total = 0, onAddEmployee }: Props) => {
+const Header = ({ title, total = 0, permissions, onAddEmployee }: Props) => {
+
+  const canAddEmployee = permissions.includes("Add Employee");
+
   return (
     <div className="header">
       <div>
@@ -16,14 +20,18 @@ const Header = ({ title, total = 0, onAddEmployee }: Props) => {
       </div>
 
       <div className="actions">
-        <button
-          className="add"
-          onClick={onAddEmployee}
-        >
-          + Add Employee
-        </button>
+
+        {canAddEmployee && (
+          <button
+            className="add"
+            onClick={onAddEmployee}
+          >
+            + Add Employee
+          </button>
+        )}
 
         <button className="export">Export</button>
+
       </div>
     </div>
   );

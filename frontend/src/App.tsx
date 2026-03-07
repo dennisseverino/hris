@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
 import Login from './pages/Login';
 import Schedule from './pages/Schedule';
 import Dashboard from './pages/Dashboard';
@@ -8,14 +9,26 @@ import ProtectedRoute from './routes/ProtectedRoute';
 import EmployeeList from './pages/EmployeeList';
 import ControlPanel from './pages/ControlPanel';
 
-
 function App() {
+
+  useEffect(() => {
+
+    const interval = setInterval(() => {
+
+      fetch("http://localhost/hris/backend/auth/refresh_permissions.php", {
+        credentials: "include"
+      }).catch(() => {});
+
+    }, 5000); // every 5 seconds
+
+    return () => clearInterval(interval);
+
+  }, []);
+
   return (
     <Routes>
-      {/* Public */}
       <Route path="/" element={<Login />} />
 
-      {/* Protected */}
       <Route
         path="/dashboard"
         element={
@@ -52,7 +65,6 @@ function App() {
         }
       />
 
-      
       <Route
         path="/ControlPanel"
         element={
@@ -70,9 +82,8 @@ function App() {
           </ProtectedRoute>
         }
       />
-      
-    </Routes>
 
+    </Routes>
   );
 }
 
