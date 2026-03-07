@@ -4,6 +4,7 @@ import type { Employee } from '../types/employee';
 
 type Props = {
   employees: Employee[];
+  permissions: string[];
   onEdit?: (employee: Employee) => void;
   onDelete?: (id: number) => void;
   onViewSchedule?: (employee: Employee) => void;
@@ -20,13 +21,17 @@ type SortField =
   | 'employee_type'
   | 'employment_status'
   | 'date_hired';
-
+  
 const EmployeeTable = ({
   employees,
+  permissions,
   onEdit,
   onDelete,
   onViewSchedule,
 }: Props) => {
+  const canEdit = permissions.includes("Edit Employee");
+  const canDelete = permissions.includes("Delete Employee");
+
   const [sortField, setSortField] = useState<SortField>('employee_id');
   const [sortDirection, setSortDirection] = useState<'asc' | 'desc'>('asc');
 
@@ -158,19 +163,23 @@ const EmployeeTable = ({
               </td>
 
               <td className="employee-action-cell">
-                <button
-                  className="employee-btn-edit"
-                  onClick={() => onEdit?.(emp)}
-                >
-                  Edit
-                </button>
+                {canEdit && (
+                  <button
+                    className="employee-btn-edit"
+                    onClick={() => onEdit?.(emp)}
+                  >
+                    Edit
+                  </button>
+                )}
 
-                <button
-                  className="employee-btn-delete"
-                  onClick={() => onDelete?.(emp.employee_id)}
-                >
-                  Delete
-                </button>
+                {canDelete && (
+                  <button
+                    className="employee-btn-delete"
+                    onClick={() => onDelete?.(emp.employee_id)}
+                  >
+                    Delete
+                  </button>
+                )}
               </td>
             </tr>
           ))}
