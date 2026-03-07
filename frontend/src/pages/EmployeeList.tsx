@@ -150,7 +150,7 @@ const EmployeeList = () => {
       const matchesStatus =
         !filters.status ||
         emp.employment_status?.toLowerCase() === filters.status.toLowerCase();
-        
+
       const matchesPosition =
         !filters.position ||
         position === filters.position.toLowerCase();
@@ -186,6 +186,7 @@ const EmployeeList = () => {
         <Header
           title="EMPLOYEE LIST"
           total={filteredEmployees.length}
+          permissions={permissions}
           onAddEmployee={() => setIsAddOpen(true)}
         />
 
