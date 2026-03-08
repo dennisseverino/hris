@@ -42,18 +42,37 @@
 
 }
 
-.edit-form input,
-.edit-form select {
+/* ===== Form Field Wrapper ===== */
+.edit-field {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== Labels ===== */
+.edit-field label {
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #374151;
+}
+
+/* ===== Inputs & Select ===== */
+.edit-field input,
+.edit-field select {
   padding: 8px 10px;
   border-radius: 6px;
   border: 1px solid #d1d5db;
   font-size: 0.9rem;
 }
 
-.edit-form input:focus,
-.edit-form select:focus {
+.edit-field input:focus,
+.edit-field select:focus {
   outline: none;
   border-color: #2563eb;
+}
+
+.edit-field.full {
+  grid-column: span 2;
 }
 
 /* ===== Actions ===== */

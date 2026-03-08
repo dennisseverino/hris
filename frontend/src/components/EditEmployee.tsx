@@ -111,43 +111,96 @@ return (
       </div>
 
       <div className="edit-form">
-          <input name="first_name" value={formData.first_name} onChange={handleChange} />
-          <input name="middle_name" value={formData.middle_name || ''} onChange={handleChange} />
-          <input name="last_name" value={formData.last_name} onChange={handleChange} />
-          <input name="email" value={formData.email} onChange={handleChange} />
-          <input name="personal_email" value={formData.personal_email || ''} onChange={handleChange} />
-            <select
+
+        <div className="edit-field">
+          <label>First Name</label>
+          <input
+            name="first_name"
+            value={formData.first_name}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className="edit-field">
+          <label>Middle Name</label>
+          <input
+            name="middle_name"
+            value={formData.middle_name || ''}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className="edit-field">
+          <label>Last Name</label>
+          <input
+            name="last_name"
+            value={formData.last_name}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className="edit-field">
+          <label>Personal Email</label>
+          <input
+            type="email"
+            name="personal_email"
+            value={formData.personal_email || ''}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className="edit-field full">
+          <label>Company Email</label>
+          <input
+           type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+          />
+        </div>
+        
+        <div className="edit-field">
+          <label>Position</label>
+          <select
             name="position"
             value={formData.position || ''}
             onChange={handleChange}
-            >
+          >
             <option value="">Select Position</option>
             {positions.map((p) => (
-                <option key={p} value={p}>{p}</option>
+              <option key={p} value={p}>{p}</option>
             ))}
-            </select>
+          </select>
+        </div>
 
-            <select
+        <div className="edit-field">
+          <label>Account</label>
+          <select
             name="account"
             value={formData.account || ''}
             onChange={handleChange}
-            >
+          >
             <option value="">Select Account</option>
             {accounts.map((a) => (
-                <option key={a} value={a}>{a}</option>
+              <option key={a} value={a}>{a}</option>
             ))}
-            </select>
+          </select>
+        </div>
 
-            <select
+        <div className="edit-field">
+          <label>Employee Type</label>
+          <select
             name="employee_type"
             value={formData.employee_type || ''}
             onChange={handleChange}
-            >
+          >
             <option value="">Select Employee Type</option>
             {employeeTypes.map((t) => (
-                <option key={t} value={t}>{t}</option>
+              <option key={t} value={t}>{t}</option>
             ))}
-            </select>
+          </select>
+        </div>
+
       </div>
 
       <div className="edit-actions">

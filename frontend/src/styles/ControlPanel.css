@@ -16,6 +16,7 @@
 
 .control-panel-container {
   flex: 1;
+
   overflow-y: auto;     /* 🔥 only this scrolls */
   padding: 40px;
 }
@@ -134,7 +135,10 @@
   background: white;
   border-radius: 10px;
   border: 1px solid #dcdcdc;
-  overflow: hidden;
+
+  flex: 1;              /* take remaining space */
+  overflow-y: auto;     /* only this scrolls */
+  max-height: 500px;    /* optional limit */
 }
 
 .control-panel-table {
@@ -145,6 +149,15 @@
 .control-panel-table thead {
   background: #2e86c1;
   color: white;
+}
+
+.control-panel-table thead th {
+  position: sticky;
+  top: 0;
+  padding: 15px;
+  background: #2e86c1;
+  text-align: left;
+  font-size: 14px;
 }
 
 .control-panel-table th,
