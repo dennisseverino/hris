@@ -19,7 +19,7 @@ const ProtectedRoute = ({
 
   useEffect(() => {
     fetch(
-      "http://localhost/hris/backend/control_panel/get_user.php",
+      "http://localhost/hris_employee/backend/control_panel/get_user.php",
       { credentials: "include" }
     )
       .then((res) => {

@@ -17,7 +17,7 @@ const Login = () => {
 
     try {
       const res = await fetch(
-        'http://localhost/hris/backend/auth/login.php',
+        'http://localhost/hris_employee/backend/auth/login.php',
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -35,7 +35,7 @@ const Login = () => {
 
         // Fetch session permissions
         const sessionRes = await fetch(
-          'http://localhost/hris/backend/auth/get_session.php',
+          'http://localhost/hris_employee/backend/auth/get_session.php',
           { credentials: 'include' }
         );
 

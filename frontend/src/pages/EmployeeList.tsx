@@ -51,7 +51,7 @@ const EmployeeList = () => {
   const fetchEmployees = async () => {
     try {
       const res = await fetch(
-        'http://localhost/hris/backend/employees/get_employees.php',
+        'http://localhost/hris_employee/backend/employees/get_employees.php',
         { credentials: 'include' }
       );
 

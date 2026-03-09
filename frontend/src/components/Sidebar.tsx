@@ -16,7 +16,7 @@ const Sidebar = () => {
   const [employeeOpen, setEmployeeOpen] = useState(false); // 🔥 dropdown state
 
   useEffect(() => {
-    fetch('http://localhost/hris/backend/control_panel/get_user.php', {
+    fetch('http://localhost/hris_employee/backend/control_panel/get_user.php', {
       credentials: 'include',
     })
       .then(res => {
@@ -32,7 +32,7 @@ const Sidebar = () => {
   }, [navigate]);
 
   const handleLogout = async () => {
-    await fetch('http://localhost/hris/backend/auth/logout.php', {
+    await fetch('http://localhost/hris_employee/backend/auth/logout.php', {
       method: 'POST',
       credentials: 'include',
     });
