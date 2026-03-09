@@ -46,7 +46,7 @@ const ControlPanel = () => {
 
   const fetchRoles = async () => {
     const res = await fetch(
-      "http://localhost/hris_employee/backend/control_panel/get_roles_with_permissions.php",
+      "http://localhost/hris/backend/control_panel/get_roles_with_permissions.php",
       { credentials: "include" }
     );
 
@@ -63,7 +63,7 @@ const ControlPanel = () => {
 
   const fetchUsers = async () => {
     const res = await fetch(
-      "http://localhost/hris_employee/backend/control_panel/get_users_with_permissions.php",
+      "http://localhost/hris/backend/control_panel/get_users_with_permissions.php",
       { credentials: "include" }
     );
 
@@ -101,7 +101,7 @@ const ControlPanel = () => {
     if (!selectedRole) return;
 
     await fetch(
-      "http://localhost/hris_employee/backend/control_panel/update_role_permissions.php",
+      "http://localhost/hris/backend/control_panel/update_role_permissions.php",
       {
         method: "POST",
         headers: {
@@ -128,7 +128,7 @@ const ControlPanel = () => {
   const handleOpenUserPermissions = async (user: UserRow) => {
 
     const res = await fetch(
-      `http://localhost/hris_employee/backend/control_panel/get_user_permissions.php?user_id=${user.id}`,
+      `http://localhost/hris/backend/control_panel/get_user_permissions.php?user_id=${user.id}`,
       { credentials: "include" }
     );
 
@@ -158,7 +158,7 @@ const saveUserPermissions = async () => {
   try {
 
     const res = await fetch(
-      "http://localhost/hris_employee/backend/control_panel/update_user_permissions.php",
+      "http://localhost/hris/backend/control_panel/update_user_permissions.php",
       {
         method: "POST",
         headers: {
@@ -217,7 +217,7 @@ const saveUserPermissions = async () => {
   const fetchLogs = async () => {
 
   const res = await fetch(
-    "http://localhost/hris_employee/backend/control_panel/get_logs.php",
+    "http://localhost/hris/backend/control_panel/get_logs.php",
     { credentials: "include" }
   );
 
@@ -245,7 +245,7 @@ useEffect(() => {
   const fetchArchivedUsers = async () => {
 
     const res = await fetch(
-      "http://localhost/hris_employee/backend/control_panel/get_archived_users.php",
+      "http://localhost/hris/backend/control_panel/get_archived_users.php",
       { credentials: "include" }
     );
 
@@ -268,7 +268,7 @@ useEffect(() => {
 const restoreUser = async (id: number) => {
 
   await fetch(
-    "http://localhost/hris_employee/backend/control_panel/restore_user.php",
+    "http://localhost/hris/backend/control_panel/restore_user.php",
     {
       method: "POST",
       credentials: "include",
@@ -283,7 +283,7 @@ const restoreUser = async (id: number) => {
 const deleteUser = async (id: number) => {
 
   const res = await fetch(
-    `http://localhost/hris_employee/backend/control_panel/delete_user_permanently.php?employee_id=${id}`,
+    `http://localhost/hris/backend/control_panel/delete_user_permanently.php?employee_id=${id}`,
     {
       method: "POST",
       credentials: "include"

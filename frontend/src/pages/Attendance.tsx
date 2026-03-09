@@ -36,7 +36,7 @@ const Attendance = () => {
     });
 
     fetch(
-      `http://localhost/hris_employee/backend/employees/attendance_list.php?${params}`,
+      `http://localhost/hris/backend/employees/attendance_list.php?${params}`,
       { credentials: 'include' }
     )
       .then(res => res.json())
