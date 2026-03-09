@@ -8,8 +8,6 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import '../styles/sidebar.css';
 
-
-
 const Sidebar = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState<User | null>(null);

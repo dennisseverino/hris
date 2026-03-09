@@ -1,10 +1,13 @@
-import { useEffect, useState } from 'react';
+///import { useEffect, useState } from 'react';
 import '../styles/dashboard.css';
 import Sidebar from '../components/Sidebar';
 
 const Dashboard = () => {
   // Stubs for layout rendering
   const now = new Date();
+  const announcements = [];
+  const holidays = [];
+  const attendanceList = [];
   const schedule = {
     start_time: "08:00 AM",
     end_time: "05:00 PM",
