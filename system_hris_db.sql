@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 06, 2026 at 06:17 AM
+-- Generation Time: Mar 09, 2026 at 05:42 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -164,7 +164,7 @@ CREATE TABLE `employees` (
   `employment_status` varchar(20) DEFAULT NULL,
   `employee_type` varchar(30) DEFAULT NULL,
   `date_hired` date DEFAULT NULL,
-  `archived` tinyint(1) DEFAULT NULL
+  `archived` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -174,15 +174,17 @@ CREATE TABLE `employees` (
 INSERT INTO `employees` (`employee_id`, `user_id`, `first_name`, `middle_name`, `last_name`, `address`, `birthdate`, `civil_status`, `email`, `personal_email`, `position`, `account`, `cluster_id`, `contact_number`, `employment_status`, `employee_type`, `date_hired`, `archived`) VALUES
 (1, 2, 'admin', NULL, 'admin', NULL, NULL, NULL, 'admin@ireply.com', NULL, 'superadmin', NULL, NULL, NULL, NULL, NULL, NULL, 0),
 (2, 3, 'dennis', NULL, 'Severino', NULL, NULL, NULL, 'test@gmail.com', NULL, 'CSR', 'Sample', NULL, NULL, 'Active', NULL, '2026-01-29', 0),
-(3, 4, 'stella', NULL, 'Eriman', NULL, NULL, NULL, 'stellamarieeriman@gmail.com', NULL, 'CSR', 'Voya', NULL, NULL, 'Active', NULL, '2026-01-30', 1),
-(4, 5, 'Jan Kevin', 'Dilag', 'Dilas', 'Mandalagan', '2016-02-09', NULL, 'jankevin@gmail.com', 'jankevin@gmail.com', 'CSR', 'Royal', NULL, '09321742123', 'Active', 'Regular', '2026-02-05', 1),
-(5, 6, 'Kenneth', NULL, 'De Vera', NULL, NULL, NULL, 'kenneth@gmail.com', NULL, 'CSR', 'Pepsi', NULL, NULL, 'Active', NULL, '2026-02-11', 1),
+(3, 4, 'stella', NULL, 'Eriman', NULL, NULL, NULL, 'stellamarieeriman@gmail.com', NULL, 'CSR', 'Voya', NULL, NULL, 'Active', NULL, '2026-01-30', 0),
+(4, 5, 'Jan Kevin', 'Dilag', 'Dilas', 'Mandalagan', '2016-02-09', NULL, 'jankevin@gmail.com', 'jankevin@gmail.com', 'CSR', 'Royal', NULL, '09321742123', 'Active', 'Regular', '2026-02-05', 0),
+(5, 6, 'Kenneth', NULL, 'De Vera', NULL, NULL, NULL, 'kenneth@gmail.com', NULL, 'CSR', 'Pepsi', NULL, NULL, 'Active', NULL, '2026-02-11', 0),
 (6, 7, 'Stella', 'Stella', 'Stellaa', 'iReply', '2002-08-23', 'Married', 'stellaa@gmail.com', 'stella@gmail.com', 'Sr. Recruitment Specialist', 'iReply Back Office Services', NULL, '09521511421', 'Active', 'Regular', '2026-02-17', 0),
-(7, 8, 'Test2', 'Test2', 'Test2', 'iQor', '2002-11-20', 'Married', 'test2@gmail.com', 'test2@gmail.com', 'Accounting', 'NUSO', NULL, '095827361234', 'Active', 'Contractual', '2026-02-18', 1),
-(9, 10, 'Admin1', 'Admin1', 'Admin1', 'Admin Address', '2002-11-11', 'Single', 'admin1@gmail.com', 'admin1@gmail.com', 'HR Coordinator', 'iReply Back Office Services', NULL, '09521235612', 'Active', 'Regular', '2026-02-26', 1),
-(10, 11, 'yannie', 'yannie', 'yannie', 'yannie', '2002-08-23', 'Married', 'yannie@gmail.com', 'yannie@gmail.com', 'Head of Training', 'Element IQ', NULL, '09213521231', 'Active', 'Regular', '2026-03-05', NULL),
-(11, 12, 'user1', 'user1', 'user1', 'uesr1', '2002-11-11', 'Single', 'user1@gmail.com', 'user1@gmail.com', 'Accounting', 'NUSO', NULL, '09231242312', 'Active', 'Regular', '2026-03-06', NULL),
-(12, 13, 'kevin', 'kevin', 'kevin', 'kevin', '2222-02-22', 'Single', 'kevin@gmail.com', 'kevin@gmail.com', 'Head of Training', 'Telepath', NULL, '09238123211', 'Active', 'Probationary', '2026-03-06', NULL);
+(7, 8, 'Test2', 'Test2', 'Test2', 'iQor', '2002-11-20', 'Married', 'test2@gmail.com', 'test2@gmail.com', 'Accounting', 'NUSO', NULL, '095827361234', 'Active', 'Contractual', '2026-02-18', 0),
+(9, 10, 'Admin1', 'Admin1', 'Admin1', 'Admin Address', '2002-11-11', 'Single', 'admin1@gmail.com', 'admin1@gmail.com', 'HR Coordinator', 'iReply Back Office Services', NULL, '09521235612', 'Active', 'Regular', '2026-02-26', 0),
+(10, 11, 'yannie', 'yannie', 'yannie', 'yannie', '2002-08-23', 'Married', 'yannie@gmail.com', 'yannie@gmail.com', 'Head of Training', 'Element IQ', NULL, '09213521231', 'Active', 'Regular', '2026-03-05', 0),
+(11, 12, 'user1', 'user1', 'user1', 'uesr1', '2002-11-11', 'Single', 'user1@gmail.com', 'user1@gmail.com', 'Accounting', 'NUSO', NULL, '09231242312', 'Active', 'Regular', '2026-03-06', 0),
+(12, 13, 'kevin', 'kevin', 'kevin', 'kevin', '2222-02-22', 'Single', 'kevin@gmail.com', 'kevin@gmail.com', 'Head of Training', 'Telepath', NULL, '09238123211', 'Active', 'Probationary', '2026-03-06', 0),
+(13, 14, 'user2', 'user2', 'user2', 'user2', '2002-02-22', 'Single', 'user2@gmail.com', 'user2@gmail.com', 'Accounting Associate', 'Sourcetoad', NULL, '09213453123', 'Active', 'Regular', '2026-03-07', 0),
+(14, 15, 'user31', 'user3', 'user3', 'user3', '2002-02-01', 'Single', 'user3@gmail.com', 'user3@gmail.com', 'Sr. Recruitment Specialist', 'Telepath', NULL, '09843123456', 'Active', 'Contractual', '2026-03-07', 0);
 
 -- --------------------------------------------------------
 
@@ -323,7 +325,6 @@ INSERT INTO `role_permissions` (`role_id`, `permission_id`) VALUES
 (2, 8),
 (2, 9),
 (2, 10),
-(2, 11),
 (3, 5),
 (3, 6),
 (3, 7),
@@ -331,8 +332,7 @@ INSERT INTO `role_permissions` (`role_id`, `permission_id`) VALUES
 (3, 9),
 (4, 6),
 (4, 7),
-(4, 8),
-(4, 9);
+(4, 8);
 
 -- --------------------------------------------------------
 
@@ -392,19 +392,19 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `email`, `password`, `role_id`, `created_at`) VALUES
-(1, 'superadmin', '$2y$10$a1Eja8oI5QXMXHNOvNBABuHGXgsy1SPUjfwR59fikshRzr7ZVn9YO', 1, '2026-01-29 17:04:40'),
 (2, 'admin@ireply.com', '$2y$10$a1Eja8oI5QXMXHNOvNBABuHGXgsy1SPUjfwR59fikshRzr7ZVn9YO', 1, '2026-03-05 17:53:32'),
-(3, 'test@gmail.com', '$2y$10$a1Eja8oI5QXMXHNOvNBABuHGXgsy1SPUjfwR59fikshRzr7ZVn9YO', 2, '2026-03-05 17:53:32'),
+(3, 'test@gmail.com', '$2y$10$a1Eja8oI5QXMXHNOvNBABuHGXgsy1SPUjfwR59fikshRzr7ZVn9YO', 3, '2026-03-05 17:53:32'),
 (4, 'stellamarieeriman@gmail.com', '$2y$10$a1Eja8oI5QXMXHNOvNBABuHGXgsy1SPUjfwR59fikshRzr7ZVn9YO', 2, '2026-03-05 17:53:32'),
 (5, 'jankevin@gmail.com', '$2y$10$a1Eja8oI5QXMXHNOvNBABuHGXgsy1SPUjfwR59fikshRzr7ZVn9YO', 2, '2026-03-05 17:53:32'),
 (6, 'kenneth@gmail.com', '$2y$10$a1Eja8oI5QXMXHNOvNBABuHGXgsy1SPUjfwR59fikshRzr7ZVn9YO', 2, '2026-03-05 17:53:32'),
 (7, 'stellaa@gmail.com', '$2y$10$a1Eja8oI5QXMXHNOvNBABuHGXgsy1SPUjfwR59fikshRzr7ZVn9YO', 2, '2026-03-05 17:53:32'),
 (8, 'test2@gmail.com', '$2y$10$a1Eja8oI5QXMXHNOvNBABuHGXgsy1SPUjfwR59fikshRzr7ZVn9YO', 2, '2026-03-05 17:53:32'),
-(9, 'jaden1@gmail.com', '$2y$10$a1Eja8oI5QXMXHNOvNBABuHGXgsy1SPUjfwR59fikshRzr7ZVn9YO', 2, '2026-03-05 17:53:32'),
 (10, 'admin1@gmail.com', '$2y$10$a1Eja8oI5QXMXHNOvNBABuHGXgsy1SPUjfwR59fikshRzr7ZVn9YO', 2, '2026-03-05 17:53:32'),
 (11, 'yannie@gmail.com', '$2y$10$TEjneTDbyXFRE8v5Oxb5keFJd70JWVclruiPaKtxwp4ZAXfj5q4b2', 4, NULL),
 (12, 'user1@gmail.com', '$2y$10$92sE1PJ1ZBtKH9P/2ZgYb.y9B/jA2t7YTH2iygHXQoaKqNQPP7sFW', 4, NULL),
-(13, 'kevin@gmail.com', '$2y$10$aD6z0ncZURS9GvReJBzYTurMh1RzE5YtLCKGp5WFgUtjsyyPBfVOG', 4, NULL);
+(13, 'kevin@gmail.com', '$2y$10$aD6z0ncZURS9GvReJBzYTurMh1RzE5YtLCKGp5WFgUtjsyyPBfVOG', 2, NULL),
+(14, 'user2@gmail.com', '$2y$10$Rshf7jf.s0NX31YnELKobOuATGix2s2oEK7GfGg/R5FmX5.NnFx9m', 4, NULL),
+(15, 'user3@gmail.com', '$2y$10$pwrLZUostH7EQ75kHYL4FeYg/gdkuxcbzIMU3XimlF0rvcNQVyQVq', 4, NULL);
 
 -- --------------------------------------------------------
 
@@ -434,7 +434,18 @@ INSERT INTO `user_permissions` (`Id`, `user_id`, `permission_id`, `is_allowed`) 
 (8, 12, 8, 1),
 (9, 12, 9, 0),
 (10, 12, 10, 0),
-(11, 12, 11, 0);
+(11, 12, 11, 0),
+(12, 13, 1, 1),
+(13, 13, 2, 1),
+(14, 13, 3, 1),
+(15, 13, 4, 1),
+(16, 13, 5, 1),
+(17, 13, 6, 1),
+(18, 13, 7, 1),
+(19, 13, 8, 1),
+(20, 13, 9, 1),
+(21, 13, 10, 0),
+(22, 13, 11, 0);
 
 --
 -- Indexes for dumped tables
@@ -617,7 +628,7 @@ ALTER TABLE `clusters`
 -- AUTO_INCREMENT for table `employees`
 --
 ALTER TABLE `employees`
-  MODIFY `employee_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `employee_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `holidays`
@@ -665,13 +676,13 @@ ALTER TABLE `time_logs`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `user_permissions`
 --
 ALTER TABLE `user_permissions`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=144;
 
 --
 -- Constraints for dumped tables
