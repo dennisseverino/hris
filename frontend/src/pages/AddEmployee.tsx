@@ -181,13 +181,13 @@ const AddEmployee = ({ onClose }: Props) => {
             {/* PERSONAL TAB */}
             {activeTab === 'personal' && (
               <>
-                <input name="first_name" placeholder="First Name"
+                <input name="first_name" placeholder="First Name" minLength={3} required
                   value={formData.first_name} onChange={handleChange} />
 
-                <input name="middle_name" placeholder="Middle Name"
+                <input name="middle_name" placeholder="Middle Name" minLength={3} required
                   value={formData.middle_name} onChange={handleChange} />
 
-                <input name="last_name" placeholder="Last Name"
+                <input name="last_name" placeholder="Last Name" minLength={3} required
                   value={formData.last_name} onChange={handleChange} />
 
                 <input name="address" placeholder="Address"
@@ -196,13 +196,10 @@ const AddEmployee = ({ onClose }: Props) => {
                 <input type="date" name="birthdate"
                   value={formData.birthdate} onChange={handleChange} />
 
-                <input type="text" name="contact_number" placeholder="Contact Number" maxLength={13}
-                  value={formData.contact_number || ""} onChange={(e) => {const numbersOnly = e.target.value.replace(/\D/g, "");
-
-                    setFormData({
-                      ...formData,
-                      contact_number: numbersOnly
-                    });
+                /* CONTINUE HERE (Still needs validation) */
+                <input type="text" name="contact_number" placeholder="Contact Number" maxLength={11}
+                  value={formData.contact_number || "+63"} onChange={(e) => {const numbersOnly = e.target.value.replace(/\D/g, "");
+                    setFormData({ ...formData, contact_number: "+" + value, numbersOnly }); 
                   }}
                 />
 
@@ -213,10 +210,12 @@ const AddEmployee = ({ onClose }: Props) => {
                   {civilStatuses.map(c => <option key={c}>{c}</option>)}
                 </select>
 
-                <input name="personal_email" placeholder="Personal Email"
+                <input name="personal_email" placeholder="Personal Email" pattern="^[a-zA-Z0-9._%+-]+@gmail\.com$"
+                  title="Email must be a Gmail address" required
                   value={formData.personal_email} onChange={handleChange} />
 
-                <input type="email" name="email" placeholder="Work Email"
+                <input type="email" name="email" placeholder="Work Email" pattern="^[a-zA-Z0-9._%+-]+@gmail\.com$"
+                  title="Email must be a Gmail address" required
                   value={formData.email} onChange={handleChange} />
               </>
             )}
