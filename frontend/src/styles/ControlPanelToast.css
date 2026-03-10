@@ -1,0 +1,20 @@
+.control-toast {
+  position: fixed;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  animation: fadeIn 0.25s ease;
+}
+
+.control-toast.success {
+  background: #22c55e;
+}
+
+.control-toast.error {
+  background: #ef4444;
+}
