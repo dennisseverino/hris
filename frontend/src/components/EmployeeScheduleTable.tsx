@@ -1,4 +1,4 @@
-import StatusBadge from "./StatusBadge";
+import StatusBadge from "./Employee/StatusBadge";
 import type { Employee } from "../types/employee";
 
 type Props = {

@@ -1,17 +1,17 @@
 import { useEffect, useMemo, useState } from 'react';
-import Sidebar from '../components/Sidebar';
-import Header from '../components/Header';
-import SearchBar from '../components/SearchBar';
-import EmployeeTable from '../components/EmployeeTable';
-import EmployeeCards from '../components/EmployeeCard';
-import EditEmployee from '../components/EditEmployee';
+import Sidebar from '../components/Navbar/Sidebar';
+import Header from '../components/Employee/Header';
+import SearchBar from '../components/Employee/SearchBar';
+import EmployeeTable from '../components/Employee/EmployeeTable';
+import EmployeeCards from '../components/Employee/EmployeeCard';
+import EditEmployee from '../components/Employee/EditEmployee';
 import ViewScheduleModal from '../components/ViewScheduleModal';
 import AddEmployee from './AddEmployee';
-import FilterModal from '../components/FilterModal';
+import FilterModal from '../components/Employee/FilterModal';
 
 import type { Employee } from '../types/employee';
-import '../styles/employeeList.css';
-import EmployeeInfoModal from '../components/EmployeeInfoModal';
+import '../styles/Employee/employeeList.css';
+import EmployeeInfoModal from '../components/Employee/EmployeeInfoModal';
 
 const EmployeeList = () => {
   const [search, setSearch] = useState('');

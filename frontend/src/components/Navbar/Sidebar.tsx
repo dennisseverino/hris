@@ -6,7 +6,7 @@ type User = {
 
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import '../styles/sidebar.css';
+import '../../styles/sidebar.css';
 
 
 

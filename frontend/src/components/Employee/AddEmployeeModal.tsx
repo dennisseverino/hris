@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import type { Employee } from "../types/employee";
-import "../styles/editEmployeeModal.css";
+import type { Employee } from "../../types/employee";
+import "../../styles/Employee/editEmployeeModal.css";
 
 type ScheduleBlock = {
   shiftType: "Morning" | "Mid" | "Night";
