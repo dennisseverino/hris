@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import '../styles/Dashboard.css';
-import Sidebar from '../components/Sidebar';
+import Sidebar from '../components/Navbar/Sidebar';
 
 type AttendanceToday = {
   attendance_id: number;

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import Sidebar from '../components/Sidebar';
+import Sidebar from '../components/Navbar/Sidebar';
 import AttendanceDetailsModal from '../components/AttendanceDetailsModal';
-import '../styles/Attendance.css';
+import '../styles/Employee/Attendance.css';
 
 type AttendanceRow = {
   employee_id: number;

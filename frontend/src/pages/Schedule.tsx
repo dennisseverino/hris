@@ -1,11 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
 
-import Sidebar from "../components/Sidebar";
-import SearchBar from "../components/SearchBar";
-import EmployeeScheduleTable from "../components/EmployeeScheduleTable";
-import AddEmployeeModal from "../components/AddEmployeeModal"; // ✅ correct modal
-import ViewScheduleModal from "../components/ViewScheduleModal";
-import FilterModal from "../components/FilterModal";
+import Sidebar from "../components/Navbar/Sidebar";
+import SearchBar from "../components/Employee/SearchBar";
+import EmployeeScheduleTable from "../components/Employee/EmployeeScheduleTable";
+import AddEmployeeModal from "../components/Employee/AddEmployeeModal"; // ✅ correct modal
+import ViewScheduleModal from "../components/Employee/ViewScheduleModal";
+import FilterModal from "../components/Employee/FilterModal";
 
 import type { Employee } from "../types/employee";
 import "../styles/schedule.css";

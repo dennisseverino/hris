@@ -1,4 +1,4 @@
-import '../styles/filterModal.css';
+import '../../styles/Employee/filterModal.css';
 
 type Filters = {
   account: string;

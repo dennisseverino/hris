@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import type { Employee } from '../types/employee';
-import '../styles/editEmployee.css';
+import type { Employee } from '../../types/employee';
+import '../../styles/Employee/editEmployee.css';
 
 const positions = [
   "President","HR Lead","Service Delivery Manager","HR Coordinator",

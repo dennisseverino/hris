@@ -1,5 +1,5 @@
 import '../styles/Team.css';
-import Sidebar from '../components/Sidebar';
+import Sidebar from '../components/Navbar/Sidebar';
 
 const Team = () => {
   return (

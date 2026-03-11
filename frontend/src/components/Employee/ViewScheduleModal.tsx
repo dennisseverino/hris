@@ -1,5 +1,5 @@
-import type { Employee } from '../types/employee';
-import '../styles/viewScheduleModal.css';
+import type { Employee } from '../../types/employee';
+import '../../styles/Employee/viewScheduleModal.css';
 
 type Props = {
   employee: Employee | null;

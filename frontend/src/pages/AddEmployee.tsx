@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import '../styles/add.css';
+import '../styles/Employee/addemployee.css';
 
 type Props = {
   onClose: () => void;
