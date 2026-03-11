@@ -161,30 +161,7 @@
   background: #d1d5db;
 }
 
-.employee-list-content .add {
-  background: #1e90ff;
-  color: white;
-  border-radius: 8px;
-  padding: 8px 14px;
-  border: none;
-  cursor: pointer;
-}
 
-.employee-list-content .add:hover {
-  background: #187bcd;
-}
-
-.employee-list-content .export {
-  background: #e5e7eb;
-  border-radius: 8px;
-  padding: 8px 14px;
-  border: 1px solid #ccc;
-  cursor: pointer;
-}
-
-.employee-list-content .export:hover {
-  background: #d1d5db;
-}
 
 
 .employee-table th {
@@ -282,4 +259,38 @@
 
 .employee-sticky-name {
   box-shadow: 3px 0 6px rgba(0,0,0,0.08);
+}
+
+
+/* HEADER CSS */
+.employee-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.employee-list-content .add-employee-btn {
+  background: #1e90ff;
+  color: white;
+  border-radius: 8px;
+  padding: 8px 14px;
+  border: none;
+  cursor: pointer;
+}
+
+.employee-list-content .add-employee-btn:hover {
+  background: #187bcd;
+}
+
+.employee-list-content .export-btn {
+  background: #e5e7eb;
+  border-radius: 8px;
+  padding: 8px 14px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.employee-list-content .export-btn:hover {
+  background: #d1d5db;
 }

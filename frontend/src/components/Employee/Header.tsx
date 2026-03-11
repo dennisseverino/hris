@@ -10,7 +10,7 @@ const Header = ({ title, total = 0, permissions, onAddEmployee }: Props) => {
   const canAddEmployee = permissions.includes("Add Employee");
 
   return (
-    <div className="header">
+    <div className="employee-header">
       <div>
         <h1>{title || 'EMPLOYEE SCHEDULE'}</h1>
         <span className="count">
@@ -19,18 +19,18 @@ const Header = ({ title, total = 0, permissions, onAddEmployee }: Props) => {
         </span>
       </div>
 
-      <div className="actions">
+      <div className="employee-actions">
 
         {canAddEmployee && (
           <button
-            className="add"
+            className="add-employee-btn"
             onClick={onAddEmployee}
           >
             + Add Employee
           </button>
         )}
 
-        <button className="export">Export</button>
+        <button className="export-btn">Export</button>
 
       </div>
     </div>

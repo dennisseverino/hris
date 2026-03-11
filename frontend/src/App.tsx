@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import { useEffect } from 'react';
 import Login from './pages/Login';
 import Schedule from './pages/Schedule';
-import Dashboard from './pages/Dashboard';
+import MainDashboard from './pages/MainDashboard';
 import Team from './pages/Team';
 import Attendance from './pages/Attendance';
 import ProtectedRoute from './routes/ProtectedRoute';
@@ -33,7 +33,7 @@ function App() {
         path="/dashboard"
         element={
           <ProtectedRoute>
-            <Dashboard />
+            <MainDashboard />
           </ProtectedRoute>
         }
       />

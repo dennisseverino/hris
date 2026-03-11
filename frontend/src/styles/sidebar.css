@@ -2,9 +2,12 @@
 /* Sidebar */
 .sidebar {
   width: 240px;
+  height: 100vh;
+  flex-shrink: 0;
   background: #fff;
   border-right: 1px solid #e5e7eb;
   padding: 20px;
+  overflow-y: auto;
 }
 
 .sidebar-logo {
@@ -141,4 +144,13 @@
 .dropdown-content a {
   padding: 10px 12px;
   margin: 4px 0;
+}
+
+
+
+@media (max-width: 980px){
+  .sidebar {
+    width: 100%;
+    height: auto;
+  }
 }
