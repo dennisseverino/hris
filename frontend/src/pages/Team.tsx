@@ -1,4 +1,4 @@
-import '../styles/Team.css';
+import '../styles/team.css';
 import Sidebar from '../components/Navbar/Sidebar';
 
 const Team = () => {
