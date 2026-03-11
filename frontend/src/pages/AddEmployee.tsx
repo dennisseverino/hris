@@ -196,10 +196,9 @@ const AddEmployee = ({ onClose }: Props) => {
                 <input type="date" name="birthdate"
                   value={formData.birthdate} onChange={handleChange} />
 
-                /* CONTINUE HERE (Still needs validation) */
-                <input type="text" name="contact_number" placeholder="Contact Number" maxLength={11}
+                <input type="text" name="contact_number" placeholder="Contact Number" maxLength={13} pattern="^\+\d{10,12}$" title="Contact number must start with + and contain 10-12 digits" required
                   value={formData.contact_number || "+63"} onChange={(e) => {const numbersOnly = e.target.value.replace(/\D/g, "");
-                    setFormData({ ...formData, contact_number: "+" + value, numbersOnly }); 
+                    setFormData({ ...formData, contact_number: "+" + numbersOnly }); 
                   }}
                 />
 
